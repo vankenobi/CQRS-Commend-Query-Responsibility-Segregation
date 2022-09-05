@@ -33,5 +33,12 @@ namespace CQRS.Controllers
         {
             return await _mediator.Send(createProductCommandRequest);
         }
+
+        [HttpDelete]
+        [Route("DeleteProductById")]
+        public async Task<DeleteProductCommandResponse> DeleteProductAsync(DeleteProductCommandRequest deleteProductCommandRequest) 
+        {
+            return await _mediator.Send(deleteProductCommandRequest);
+        }
     }
 }
