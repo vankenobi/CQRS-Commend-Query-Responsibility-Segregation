@@ -2,7 +2,7 @@
 
 namespace CQRS.CQRS.Queries.Response
 {
-    public class GetAllProductQueryResponse
+    public class GetAllProductQueryResponse  
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

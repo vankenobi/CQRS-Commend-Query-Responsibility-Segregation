@@ -1,28 +1,31 @@
 ﻿using CQRS.CQRS.Queries.Request;
 using CQRS.CQRS.Queries.Response;
 using CQRS.Infrastructure.Context;
+using MediatR;
 
 namespace CQRS.CQRS.Handlers.Query_Handlers
 {
-    public class GetAllProductQueryHandler
+    public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryRequest,List<GetAllProductQueryResponse>>
     {
-        private readonly PsqlContext _psqlContext;
+        private readonly PsqlContext _context;
 
-        public GetAllProductQueryHandler(PsqlContext psqlContext)
+        public GetAllProductQueryHandler(PsqlContext context)
         {
-            _psqlContext = psqlContext;
+            _context = context;
         }
 
-        public List<GetAllProductQueryResponse> GetAllProducts() 
+        public async Task<List<GetAllProductQueryResponse>> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
         {
-            return _psqlContext.Products.Select(product => new GetAllProductQueryResponse
+            var result = _context.Products.Select(product => new GetAllProductQueryResponse
             {
                 Id = product.Id,
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
                 CreateTime = product.CreateTime
-            }).ToList<GetAllProductQueryResponse>();
+            });
+            
+            return result.ToList();
         }
     }
 }

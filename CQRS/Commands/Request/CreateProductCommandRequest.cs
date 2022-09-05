@@ -1,6 +1,9 @@
-﻿namespace CQRS.CQRS.Commands.Request
+﻿using CQRS.CQRS.Commands.Response;
+using MediatR;
+
+namespace CQRS.CQRS.Commands.Request
 {
-    public class CreateProductCommandRequest
+    public class CreateProductCommandRequest : IRequest<CreateProductCommandResponse>
     {
         public string Name { get; set; }
         public int Quantity  { get; set; }
