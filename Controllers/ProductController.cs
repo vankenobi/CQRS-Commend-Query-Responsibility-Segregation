@@ -40,5 +40,13 @@ namespace CQRS.Controllers
         {
             return await _mediator.Send(deleteProductCommandRequest);
         }
+
+        [HttpPut]
+        [Route("UpdateProductAsync")]
+        public async Task<UpdateProductCommandResponse> UpdateProductAsync(UpdateProductCommandRequest updateProductCommandRequest) 
+        {
+            return await _mediator.Send(updateProductCommandRequest);
+        }
+        
     }
 }
