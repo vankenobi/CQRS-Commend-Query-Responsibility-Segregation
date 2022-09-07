@@ -1,10 +1,12 @@
 ﻿using CQRS.CQRS.Queries.Request;
 using CQRS.CQRS.Queries.Response;
 using CQRS.Infrastructure.Context;
+using MediatR;
+using System.Data.Entity;
 
 namespace CQRS.CQRS.Handlers.Query_Handlers
 {
-    public class GetProductByIdQueryHandler
+    public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQueryRequest,GetProductByIdQueryResponse>
     {
         private readonly PsqlContext _psqlContext; 
 
@@ -12,9 +14,10 @@ namespace CQRS.CQRS.Handlers.Query_Handlers
         {
                _psqlContext = psqlContext;
         }
-        public GetProductByIdQueryResponse GetProductById(GetProductByIdQueryRequest getProductByIdQueryRequest) 
+
+        public async Task<GetProductByIdQueryResponse> Handle(GetProductByIdQueryRequest request, CancellationToken cancellationToken)
         {
-            var product = _psqlContext.Products.FirstOrDefault(x => x.Id == getProductByIdQueryRequest.Id);
+            var product = _psqlContext.Products.FirstOrDefault(x => x.Id == request.Id);
             return new GetProductByIdQueryResponse
             {
                 Id = product.Id,
@@ -23,6 +26,6 @@ namespace CQRS.CQRS.Handlers.Query_Handlers
                 Quantity = product.Quantity,
                 CreateTime = product.CreateTime
             };
-        } 
+        }
     }
 }

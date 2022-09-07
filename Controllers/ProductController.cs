@@ -28,6 +28,13 @@ namespace CQRS.Controllers
         }
 
         [HttpPost]
+        [Route("GetProductByIdAsync")]
+        public async Task<GetProductByIdQueryResponse> GetProductByIdAsync(GetProductByIdQueryRequest getProductByIdQueryRequest) 
+        {
+            return await _mediator.Send(getProductByIdQueryRequest);
+        }
+
+        [HttpPost]
         [Route("AddNewProductAsync")]
         public async Task<CreateProductCommandResponse> AddNewProduct(CreateProductCommandRequest createProductCommandRequest) 
         {
