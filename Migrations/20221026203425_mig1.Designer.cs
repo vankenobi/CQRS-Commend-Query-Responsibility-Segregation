@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CQRS.Migrations
+namespace CQRSReadService.Migrations
 {
     [DbContext(typeof(PsqlContext))]
-    [Migration("20220806114441_mig1")]
+    [Migration("20221026203425_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

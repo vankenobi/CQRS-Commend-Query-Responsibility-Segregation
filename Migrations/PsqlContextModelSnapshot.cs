@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CQRS.Migrations
+namespace CQRSReadService.Migrations
 {
     [DbContext(typeof(PsqlContext))]
     partial class PsqlContextModelSnapshot : ModelSnapshot

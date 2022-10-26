@@ -9,7 +9,7 @@ namespace CQRS.Infrastructure.Context
 {
     static class Configuration
     {
-        static public string ConnectionString 
+        static public string ConnectionString
         {
             get 
             {

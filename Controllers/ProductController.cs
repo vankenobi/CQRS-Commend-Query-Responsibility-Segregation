@@ -1,6 +1,4 @@
-﻿using CQRS.CQRS.Commands.Request;
-using CQRS.CQRS.Commands.Response;
-using CQRS.CQRS.Queries.Request;
+﻿using CQRS.CQRS.Queries.Request;
 using CQRS.CQRS.Queries.Response;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -34,26 +32,5 @@ namespace CQRS.Controllers
             return await _mediator.Send(getProductByIdQueryRequest);
         }
 
-        [HttpPost]
-        [Route("AddNewProductAsync")]
-        public async Task<CreateProductCommandResponse> AddNewProduct(CreateProductCommandRequest createProductCommandRequest) 
-        {
-            return await _mediator.Send(createProductCommandRequest);
-        }
-
-        [HttpDelete]
-        [Route("DeleteProductById")]
-        public async Task<DeleteProductCommandResponse> DeleteProductAsync(DeleteProductCommandRequest deleteProductCommandRequest) 
-        {
-            return await _mediator.Send(deleteProductCommandRequest);
-        }
-
-        [HttpPut]
-        [Route("UpdateProductAsync")]
-        public async Task<UpdateProductCommandResponse> UpdateProductAsync(UpdateProductCommandRequest updateProductCommandRequest) 
-        {
-            return await _mediator.Send(updateProductCommandRequest);
-        }
-        
     }
 }

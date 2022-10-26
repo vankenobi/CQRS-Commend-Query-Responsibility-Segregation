@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CQRS.Migrations
+namespace CQRSReadService.Migrations
 {
     public partial class mig1 : Migration
     {
